@@ -53,4 +53,4 @@ function Main(props) {
         </main>
     )
 }
-export default Main;  
+export default Main;
