@@ -20,7 +20,7 @@ function App() {
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
     const [isDeletePopup, setIsDeletePopup] = useState(false);
     const [selectedCard, setSelectedCard] = useState({ name: '', link: '' });
-    const [currentUser, setCurrentUser] = useState('');
+    const [currentUser, setCurrentUser] = useState({});
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
@@ -103,7 +103,7 @@ function App() {
     }
 
     function handleUpdateAvatar(formData) {
-        api.updateAvatar(formData)
+       api.updateAvatar(formData)
             .then((res) => {
                 setCurrentUser(res);
                 closeAllPopups();
@@ -111,6 +111,7 @@ function App() {
             .catch((err) => {
                 console.error(err);
             });
+        
     }
 
     function handleAddPlaceSubmit(newCard) {
@@ -119,6 +120,9 @@ function App() {
                 setCards([newCard, ...cards]);
                 closeAllPopups();
             })
+            .catch((err) => {
+                console.error(err);
+            });
     }
 
 
